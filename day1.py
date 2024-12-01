@@ -5,7 +5,11 @@ def parse_input(input):
         for line in f:
             arr.append(line.replace("\n",""))
 
-    return arr
+    # return arr
+    arr_A = [a.split("   ")[0] for a in arr]
+    arr_b = [a.split("   ")[1] for a in arr]
+
+    return arr_A, arr_b
 
 
 def part_one(input):
@@ -22,7 +26,7 @@ def main():
     f = "inputs//day1.txt"
     data = parse_input(f)
     # data = data[:4]
-    print(data[:4])
+    # print(data)
 
     sample = []
 
