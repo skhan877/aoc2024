@@ -27,7 +27,23 @@ def part_one(input):
 
 def part_two(input):
 
-    pass
+    arr_A, arr_B = input 
+
+    arr_A = sorted(arr_A)
+    arr_B = sorted(arr_B)
+    n = len(arr_A)
+
+    score = 0 
+
+    for x in arr_A:
+        curr = 0
+        for y in arr_B:
+            while x < y:
+                if x == y:
+                    curr += 1
+        score += (x * curr)
+
+    return score 
     
 
 def main():
