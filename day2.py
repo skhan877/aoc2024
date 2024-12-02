@@ -5,14 +5,13 @@ def parse_input(input):
         for line in f:
             arr.append(line.replace("\n",""))
 
+    arr = [row.split(" ") for row in arr] 
+
     return arr
 
-def part_one(input):
 
-    n = len(input)
-    diffs = []
-    for i in range(1, n):
-        diffs.append(int(input[i]) - int(input[i-1]))
+
+def part_one(input):
 
     def is_unidirectional(diffs):
 
@@ -47,6 +46,15 @@ def part_one(input):
         
         return result
 
+    for report in input:
+        n = len(report)
+        diffs = []
+        for i in range(1, n):
+            diffs.append(int(report[i]) - int(report[i-1]))
+        print(diffs)
+
+    return 
+
 
 def part_two(input):
 
@@ -56,8 +64,8 @@ def part_two(input):
 def main():
     f = "inputs//day2.txt"
     data = parse_input(f)
-    data = data[:20]
-    print(data)
+    # data = data[:20]
+    # print(data)
 
     sample = [
         '7 6 4 2 1',
@@ -68,7 +76,11 @@ def main():
         '1 3 6 7 9'
         ]
 
-    # print(part_one(data))
+    sample = [row.split(" ") for row in sample] 
+    # print(sample)
+
+    
+    print(part_one(sample))
     # print(part_two(data))
 
 
