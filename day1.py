@@ -33,15 +33,18 @@ def part_two(input):
     arr_B = sorted(arr_B)
     n = len(arr_A)
 
+    B_counts = {} 
+    for x in arr_B:
+        if x not in B_counts:
+            B_counts[x] = 1
+        else:
+            B_counts[x] += 1
+    
     score = 0 
 
-    for x in arr_A:
-        curr = 0
-        for y in arr_B:
-            while x < y:
-                if x == y:
-                    curr += 1
-        score += (x * curr)
+    for y in arr_A:
+        if y in B_counts:
+            score += (int(y) * B_counts[y])
 
     return score 
     
@@ -49,13 +52,13 @@ def part_two(input):
 def main():
     f = "inputs//day1.txt"
     data = parse_input(f)
-    # data = data[:4]
+    # data = data[:20]
     # print(data)
 
     sample = []
 
-    print(part_one(data))
-    # print(part_two(data))
+    # print(part_one(data))
+    print(part_two(data))
 
 
 
