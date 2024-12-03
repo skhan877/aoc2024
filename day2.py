@@ -13,47 +13,36 @@ def parse_input(input):
 
 def part_one(input):
 
-    def is_unidirectional(diffs):
-
-        if '0' in diffs:
-            return False 
-        
-        else:
-
-            first_diff = diffs[0]
-
-            if first_diff > 0:
-                # increasing series 
-                for i in range(1, range(len(diffs))):
-                    if diffs[i] <= 0:
-                        return False 
-            else:
-                # decreasing series
-                for i in range(1, range(len(diffs))):
-                    if diffs[i] >= 0:
-                        return False 
-                    
-        return True  
-
-
     def has_correct_gaps(diffs):
         
         result = True
+        first_diff = diffs[0]
+        n = len(diffs)
 
-        for diff in diffs:
-            if diff < 1 or diff > 3:
-                result = False 
+        if first_diff > 0:
+            for i in range(1, n):
+                if diffs[i] < 1 or diffs[i] > 3: 
+                    result = False 
+        
+        elif first_diff < 0:
+            for i in range(1, n):
+                if diffs[i] > -1 or diffs[i] < -3: 
+                    result = False 
         
         return result
+
+    safe = 0
 
     for report in input:
         n = len(report)
         diffs = []
         for i in range(1, n):
             diffs.append(int(report[i]) - int(report[i-1]))
-        print(diffs)
+        print(diffs, has_correct_gaps(diffs))
+        if has_correct_gaps(diffs):
+            safe += 1
 
-    return 
+    return safe 
 
 
 def part_two(input):
