@@ -20,14 +20,17 @@ def part_one(input):
         n = len(diffs)
 
         if first_diff > 0:
-            for i in range(1, n):
+            for i in range(n):
                 if diffs[i] < 1 or diffs[i] > 3: 
                     result = False 
         
         elif first_diff < 0:
-            for i in range(1, n):
+            for i in range(n):
                 if diffs[i] > -1 or diffs[i] < -3: 
                     result = False 
+
+        else:
+            result = False
         
         return result
 
@@ -38,7 +41,7 @@ def part_one(input):
         diffs = []
         for i in range(1, n):
             diffs.append(int(report[i]) - int(report[i-1]))
-        print(diffs, has_correct_gaps(diffs))
+        # print(report, diffs, has_correct_gaps(diffs))
         if has_correct_gaps(diffs):
             safe += 1
 
@@ -53,7 +56,7 @@ def part_two(input):
 def main():
     f = "inputs//day2.txt"
     data = parse_input(f)
-    # data = data[:20]
+    # data = data[49:100]
     # print(data)
 
     sample = [
@@ -69,7 +72,7 @@ def main():
     # print(sample)
 
     
-    print(part_one(sample))
+    print(part_one(data))
     # print(part_two(data))
 
 
