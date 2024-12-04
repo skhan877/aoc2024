@@ -42,9 +42,19 @@ def part_one(input):
     return safe 
 
 def part_two(input):
-
     safe = 0
+    for report in input:
+        diffs = get_diffs(report)
+        if has_correct_gaps(diffs): safe += 1
+        else:
+            # adjust report to remove each element and then retest
+            n = len(input)
+            for i in range(n):
+                # report = report[]
+                pass 
 
+
+    '''
     for report in input: 
         n = len(report)        
         # result = True
@@ -88,6 +98,7 @@ def part_two(input):
 
         if result:
             safe += 1
+    '''
 
     return safe 
     
