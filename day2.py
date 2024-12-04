@@ -48,7 +48,7 @@ def part_two(input):
         if has_correct_gaps(diffs): safe += 1
         else:
             # adjust report to remove each element and then retest
-            n = len(input)
+            n = len(report)
             for i in range(n):
                 # report = report[]
                 pass 
