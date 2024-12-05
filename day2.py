@@ -45,61 +45,20 @@ def part_two(input):
     safe = 0
     for report in input:
         diffs = get_diffs(report)
-        if has_correct_gaps(diffs): safe += 1
-        else:
-            # adjust report to remove each element and then retest
-            n = len(report)
-            for i in range(n):
-                # report = report[]
-                pass 
-
-
-    '''
-    for report in input: 
-        n = len(report)        
-        # result = True
-        i, j = 0, 1
-
-        if report[0] == report[1]:
-            result = False 
-            print(report, result)
-
-        elif int(report[0]) > int(report[1]):
-            # all should be descending 
-            rems = 0
-            while j < n:
-                diff = int(report[i]) - int(report[j])
-                # print('desc', i, j, diff)
-                if diff < 1 or diff > 3:
-                    j += 1
-                    rems += 1
-                else:
-                    i += 1
-                    j += 1
-            result = False if rems > 1 else True  
-            print(report, result, rems)
-                 
-        elif int(report[0]) < int(report[1]):
-            # all should be ascending
-            rems = 0
-            while j < n:
-                diff = int(report[i]) - int(report[j])
-                # print('asc', i, j, diff)
-                if diff > -1 or diff < -3:
-                    j += 1
-                    rems += 1
-                else:
-                    i += 1
-                    j += 1
-            result = False if rems > 1 else True
-            print(report, result, rems)
-
-        # print('')
-
-        if result:
+        if has_correct_gaps(diffs): 
             safe += 1
-    '''
-
+            # print('original', report, has_correct_gaps(diffs))
+        else:
+            # print('original', report, has_correct_gaps(diffs))
+            # adjust report to remove each element and then retest
+            for _ in report:
+                report_copy = report.copy()
+                report_copy = [x for x in report_copy if x != _]
+                new_diffs = get_diffs(report_copy)
+                if has_correct_gaps(new_diffs):
+                    # print('adjusted', report_copy, has_correct_gaps(diffs)) 
+                    safe += 1
+                    break 
     return safe 
     
 
@@ -122,9 +81,15 @@ def main():
     # print(sample)
 
     
-    print(part_one(data))
+    # print(part_one(data))
     # print(part_two(data))
 
+    lst = [1,1,4,6,7]
+    n = len(lst)
+    for i in range(n):
+        lst_copy = lst.copy() 
+        lst_copy = [x for x in lst_copy[:i]] + [y for y in lst_copy[i+1:]]
+        print(lst_copy)
 
 
 if __name__ == "__main__":
