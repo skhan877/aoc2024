@@ -36,7 +36,6 @@ def part_one(input):
     safe = 0
     for report in input:
         diffs = get_diffs(report)
-        # print(report, diffs, has_correct_gaps(diffs))
         if has_correct_gaps(diffs):
             safe += 1
     return safe 
@@ -47,16 +46,12 @@ def part_two(input):
         diffs = get_diffs(report)
         if has_correct_gaps(diffs): 
             safe += 1
-            # print('original', report, has_correct_gaps(diffs))
         else:
-            # print('original', report, has_correct_gaps(diffs))
-            # adjust report to remove each element and then retest
-            for _ in report:
+            for i in range(len(report)):
                 report_copy = report.copy()
-                report_copy = [x for x in report_copy if x != _]
+                report_copy = [x for x in report_copy[:i]] + [y for y in report_copy[i+1:]]
                 new_diffs = get_diffs(report_copy)
                 if has_correct_gaps(new_diffs):
-                    # print('adjusted', report_copy, has_correct_gaps(diffs)) 
                     safe += 1
                     break 
     return safe 
@@ -80,16 +75,8 @@ def main():
     sample = [row.split(" ") for row in sample] 
     # print(sample)
 
-    
-    # print(part_one(data))
-    # print(part_two(data))
-
-    lst = [1,1,4,6,7]
-    n = len(lst)
-    for i in range(n):
-        lst_copy = lst.copy() 
-        lst_copy = [x for x in lst_copy[:i]] + [y for y in lst_copy[i+1:]]
-        print(lst_copy)
+    print(part_one(data))
+    print(part_two(data))
 
 
 if __name__ == "__main__":
