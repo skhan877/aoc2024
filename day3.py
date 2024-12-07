@@ -15,10 +15,10 @@ def product(a, b):
 def extract_muls(input): 
     lst = input[0].split(")")
     lst = [x+")" for x in lst if "mul" in x]
-    lst = [x[x.find("mul"): ] for x in lst]
-    # for instr in lst:
-    #     n = len(instr) 
-    #     idx = instr.find("mul")
+    lst = [x[x.find("mul("): ] for x in lst]
+    for instr in lst:
+        n = len(instr) 
+
 
     #     print(instr, idx)
     return lst 
