@@ -9,8 +9,16 @@ def parse_input(input):
 
     return arr
 
+def product(a, b):
+    return a * b 
+
+def extract_muls(input): 
+    lst = input[0].split(")")
+    return lst 
+
 def part_one(input):
-    pass 
+    lst = extract_muls(input)
+    return lst 
 
 def part_two(input):
     pass
@@ -19,7 +27,8 @@ def main():
     f = "inputs//day3.txt"
     data = parse_input(f)
     # data = data[20:50]
-    # print(data)
+    print(data)
+    print(" ")
 
     sample = [
         ]
