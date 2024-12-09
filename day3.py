@@ -4,9 +4,6 @@ def parse_input(input):
     with open(input, "r") as f: 
         for line in f:
             arr.append(line.replace("\n",""))
-
-    # arr = [row.split(" ") for row in arr] 
-
     return arr
 
 def product(a, b):
@@ -18,6 +15,21 @@ def extract_muls(input):
     lst = [x[x.find("mul("): ] for x in lst]
     for instr in lst:
         n = len(instr) 
+        stack = [] 
+        # print(stack) 
+        i, j = 0, 3
+        if instr[i:j+1] != "mul(":
+            continue 
+        else:
+            i, j = 4, 4
+            # print(instr, instr[j])
+            while instr[j] != ")":# and (j - i <= 7):
+                # stack.append(instr[j])
+                j += 1
+            # else:
+            #     i = j 
+            print(instr, i, j, j-i, instr[i:j].split(","))
+
 
 
     #     print(instr, idx)
