@@ -13,9 +13,11 @@ def extract_muls(input):
     lst = input[0].split(")")
     lst = [x+")" for x in lst if "mul" in x]
     lst = [x[x.find("mul("): ] for x in lst]
+    ans = 0 
+
     for instr in lst:
-        n = len(instr) 
-        stack = [] 
+        n = len(instr)
+        # stack = [] 
         # print(stack) 
         i, j = 0, 3
         if instr[i:j+1] != "mul(":
@@ -28,7 +30,10 @@ def extract_muls(input):
                 j += 1
             # else:
             #     i = j 
-            print(instr, i, j, j-i, instr[i:j].split(","))
+            nums = instr[i:j].split(",")
+            prod = int(nums[0]) * int(nums[1])
+            ans += prod
+            print(instr, i, j, j-i, nums, prod, ans)
 
 
 
