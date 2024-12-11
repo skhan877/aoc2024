@@ -15,7 +15,7 @@ def extract_muls(input):
     lst = [x[x.find("mul("): ] for x in lst]
     ans = 0 
 
-    for instr in lst:
+    for instr in lst[90:100]:
         n = len(instr)
         # stack = [] 
         # print(stack) 
@@ -25,15 +25,17 @@ def extract_muls(input):
         else:
             i, j = 4, 4
             # print(instr, instr[j])
-            while instr[j] != ")":# and (j - i <= 7):
+            while instr[j] != ")":
+                if (j - i <= 7):
                 # stack.append(instr[j])
-                j += 1
-            # else:
-            #     i = j 
+                    j += 1
+                else:
+                    i = j
+                    j += 1
             nums = instr[i:j].split(",")
             prod = int(nums[0]) * int(nums[1])
             ans += prod
-            print(instr, i, j, j-i, nums, prod, ans)
+        print(instr, i, j, j-i, nums, prod, ans)
 
 
 
