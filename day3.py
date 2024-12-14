@@ -25,19 +25,21 @@ def extract_muls(input):
         else:
             i, j = 4, 4
             # print(instr, instr[j])
-            while instr[j] != ")":
+            # while instr[j] != ")":
+            while j - i < 7:
                 if instr[j] == "(":
                     break 
-                
-                if (j - i < 7):
-                    print("less than 7: ", i, j, j-i)
+                elif instr[j] != ")":
                     j += 1
                 else:
                     print("else: ", i, j, j-i)
                     i = j
                     # j += 1
             nums = instr[i:j].split(",")
-            prod = int(nums[0]) * int(nums[1])
+            try:
+                prod = int(nums[0]) * int(nums[1])
+            except:
+                pass 
             ans += prod
         print(instr, i, j, j-i, nums, prod, ans)
 
