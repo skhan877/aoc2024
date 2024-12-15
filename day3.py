@@ -34,14 +34,12 @@ def extract_muls(input):
                 else:
                     print("else: ", i, j, j-i)
                     i = j
-                    # j += 1
+                    j += 1
             nums = instr[i:j].split(",")
-            try:
+            if isinstance(int(nums[0]), int) and isinstance(int(nums[1]), int):
                 prod = int(nums[0]) * int(nums[1])
-            except:
-                pass 
-            ans += prod
-        print(instr, i, j, j-i, nums, prod, ans)
+                ans += prod
+        print(instr, i, j, j-i, nums, ans)
 
 
 
