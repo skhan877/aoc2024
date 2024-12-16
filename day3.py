@@ -72,3 +72,9 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+    """
+    TODO
+    try with regex instead?
+    """
