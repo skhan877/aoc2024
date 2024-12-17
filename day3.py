@@ -41,9 +41,6 @@ def extract_muls(input):
                 ans += prod
         print(instr, i, j, j-i, nums, ans)
 
-
-
-    #     print(instr, idx)
     return lst 
 
 def part_one(input):
